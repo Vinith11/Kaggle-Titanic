@@ -41,8 +41,12 @@ def home():
         sibsp = int(request.form['sibsp'])
         parch = int(request.form['parch'])
         male = int(request.form['male'])
-        q = int(request.form['q'])
-        s = int(request.form['s'])
+        town = int(request.form['q'])
+        q=s=0
+        if town==1:
+            q=1
+        else:
+            s=1
 
         # Prepare the input features as a numpy array
         input_features = np.array([[pclass, age, sibsp, parch, male, q, s]])
