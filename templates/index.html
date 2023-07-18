@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Survival Prediction</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .form-container {
+        float: left;
+        width: 50%;
+        padding-right: 20px;
+      }
+
+      .result-container {
+        text-align: center;
+      }
+
+      label {
+        font-weight: bold;
+      }
+
+      input[type="number"],
+      select {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+        width: 100%;
+        background-color: #4caf50;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      h2 {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Survival Prediction</h1>
+      <div class="row">
+        <div class="col-md-6 form-container">
+          <form method="POST" action="/">
+            <div class="form-group">
+              <label for="pclass">Passenger Class:</label>
+              <select id="pclass" name="pclass" class="form-control">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="age">Age:</label>
+              <input
+                type="number"
+                id="age"
+                name="age"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="sibsp">Siblings/Spouse:</label>
+              <input
+                type="number"
+                id="sibsp"
+                name="sibsp"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="parch">Parents/Children:</label>
+              <input
+                type="number"
+                id="parch"
+                name="parch"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="male">Gender:</label>
+              <select id="male" name="male" class="form-control">
+                <option value="0">Female</option>
+                <option value="1">Male</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="q">Embarked from:</label>
+              <select id="q" name="q" class="form-control">
+                <option value="1">Queenstown</option>
+                <option value="2">Southampton</option>
+              </select>
+            </div>
+
+            <input type="submit" value="Predict" class="btn btn-primary" />
+          </form>
+        </div>
+
+        <div class="col-md-6 result-container">
+          {% if prediction_result %}
+          <h2>Prediction Result: {{ prediction_result }}</h2>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
